@@ -1,26 +1,9 @@
 import { ServerModel } from '../models/serverModel';
 import axios from 'axios';
 
-const servers: ServerModel[] = [
-    {
-        url: 'https://does-not-work.perfume.new',
-        priority: 1
-    },
-    {
-        url: 'https://gitlab.com',
-        priority: 4
-    },
-    {
-        url: 'http://app.scnt.me',
-        priority: 3
-    },
-    {
-        url: 'https://offline.scentronix.com',
-        priority: 2
-    }
-];
 
-const req = async (url: string): Promise<boolean> => {
+
+let req: (url: string) => Promise<boolean> = async (url: string) => {
     try {
         setTimeout(() => false, 5000);
         const res = await axios.get(url);
@@ -30,7 +13,26 @@ const req = async (url: string): Promise<boolean> => {
     }
 };
 
-export const serverController = async () => {
+export const serverController = async (param?: ServerModel[]) => {
+    const serversData: ServerModel[] = [
+        {
+            url: 'https://does-not-work.perfume.new',
+            priority: 1
+        },
+        {
+            url: 'https://gitlab.com',
+            priority: 4
+        },
+        {
+            url: 'http://app.scnt.me',
+            priority: 3
+        },
+        {
+            url: 'https://offline.scentronix.com',
+            priority: 2
+        }
+    ];
+    const servers = param ?? serversData
     const onlineServers: ServerModel[] = [];
     return Promise.allSettled(
         servers

@@ -4,13 +4,25 @@
   "description": "Frederik Backend Task",
   "main": "index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "nodemon index.ts"
   },
   "author": "Ledio Koci",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.20.2",
+    "@babel/plugin-transform-modules-commonjs": "^7.19.6",
+    "@babel/preset-env": "^7.20.2",
+    "@types/jest": "^29.2.3",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^29.3.1",
     "typescript": "^4.9.3"
+  },
+  "jest": {
+    "verbose": true,
+    "transformIgnorePatterns": [
+      "node_modules/(?!(<package-name>|<second-package-name>)/)"
+    ]
   },
   "dependencies": {
     "@types/ws": "^8.5.3",
@@ -21,6 +33,10 @@
     "express": "^4.18.2",
     "express-history-api-fallback": "^2.2.1",
     "express-http-context": "^1.2.4",
-    "nodemon": "^2.0.20"
+    "http-errors": "^2.0.0",
+    "jest": "^29.3.1",
+    "nodemon": "^2.0.20",
+    "save-dev": "^0.0.1-security",
+    "supertest": "^6.3.1"
   }
 }
