@@ -1,8 +1,6 @@
 import { ServerModel } from '../models/serverModel';
 import axios from 'axios';
 
-
-
 let req: (url: string) => Promise<boolean> = async (url: string) => {
     try {
         setTimeout(() => false, 5000);
